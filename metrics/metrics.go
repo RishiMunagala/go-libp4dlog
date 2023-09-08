@@ -428,14 +428,38 @@ func (p4m *P4DMetrics) resetToZero() {
 	p4m.syncBytesUpdated = 0
 
 	p4m.cmdRunning = 0
-	p4m.totalTriggerLapse = 0
-	p4m.cmdByProgramCounter = 0
-	p4m.cmdByReplicaCounter = 0
-	p4m.cmdByUserDetailCounter = 0
-	p4m.cmdByIPCounter = 0
-	p4m.cmdByUserCounter = 0
-	p4m.cmdErrorCounter = 0
-	p4m.cmdCounter = 0
+
+	for t := range p4m.totalTriggerLapse {
+		p4m.totalTriggerLapse[t] = 0
+	}
+
+	for t := range p4m.cmdByProgramCounter {
+		p4m.cmdByProgramCounter[t] = 0
+	}
+
+	for t := range p4m.cmdByReplicaCounter {
+		p4m.cmdByReplicaCounter[t] = 0
+	}
+
+	for t := range p4m.cmdByUserDetailCounter {
+		p4m.cmdByUserDetailCounter[t] = 0
+	}
+
+	for t := range p4m.cmdByIPCounter {
+		p4m.cmdByIPCounter[t] = 0
+	}
+	
+	for t := range p4m.cmdByUserCounter {
+		p4m.cmdByUserCounter[t] = 0
+	}
+
+	for t := range p4m.cmdErrorCounter {
+		p4m.cmdErrorCounter[t] = 0
+	}
+
+	for t := range p4m.cmdCounter {
+		p4m.cmdCounter[t] = 0
+	}
 }
 
 func (p4m *P4DMetrics) publishEvent(cmd p4dlog.Command) {
