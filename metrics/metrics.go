@@ -414,13 +414,14 @@ func (p4m *P4DMetrics) getCumulativeMetrics() string {
 }
 
 func (p4m *P4DMetrics) resetToZero() {
-	//for _, t := range cmd.Tables {
-		//p4m.totalReadHeld[t.TableName] = 0
-		//p4m.totalReadWait[t.TableName] = 0
-		//p4m.totalWriteHeld[t.TableName] = 0
-		//p4m.totalWriteWait[t.TableName] = 0
-	//}
-	
+	for t := range p4m.totalReadHeld {
+		p4m.totalReadHeld[t] = 0
+		p4m.totalReadWait[t] = 0
+		p4m.totalWriteHeld[t] = 0
+		p4m.totalWriteWait[t] = 0
+	}
+
+	p4m.syncFilesAdded = 0
 	p4m.syncFilesUpdated = 0
 	p4m.syncFilesDeleted = 0
 	p4m.syncBytesAdded = 0
