@@ -414,16 +414,12 @@ func (p4m *P4DMetrics) getCumulativeMetrics() string {
 }
 
 func (p4m *P4DMetrics) resetToZero() {
-	p4m.logger.Debugf("pre-loop: %+v\n", p4m)
 	for t := range p4m.totalReadHeld {
-		p4m.logger.Debugf("pre-overwrite: %+v\n", p4m.totalReadHeld)
 		p4m.totalReadHeld[t] = 0
 		p4m.totalReadWait[t] = 0
 		p4m.totalWriteHeld[t] = 0
 		p4m.totalWriteWait[t] = 0
 	}
-	p4m.logger.Debugf("post-loop: %+v\n", p4m)
-	p4m.logger.Debugf("post-loop totalReadHeld: %+v\n", p4m.totalReadHeld)
 
 	p4m.syncFilesAdded = 0
 	p4m.syncFilesUpdated = 0
