@@ -426,6 +426,16 @@ func (p4m *P4DMetrics) resetToZero() {
 	p4m.syncFilesDeleted = 0
 	p4m.syncBytesAdded = 0
 	p4m.syncBytesUpdated = 0
+
+	p4m.cmdRunning = 0
+	p4m.totalTriggerLapse = 0
+	p4m.cmdByProgramCounter = 0
+	p4m.cmdByReplicaCounter = 0
+	p4m.cmdByUserDetailCounter = 0
+	p4m.cmdByIPCounter = 0
+	p4m.cmdByUserCounter = 0
+	p4m.cmdErrorCounter = 0
+	p4m.cmdCounter = 0
 }
 
 func (p4m *P4DMetrics) publishEvent(cmd p4dlog.Command) {
