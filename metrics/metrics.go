@@ -428,7 +428,7 @@ func (p4m *P4DMetrics) resetToZero() {
 	p4m.syncBytesUpdated = 0
 
 	p4m.cmdRunning = 0
-
+	p4m.linesRead = 0
 	
 	for t := range p4m.totalTriggerLapse {
 		p4m.totalTriggerLapse[t] = float64(0)
