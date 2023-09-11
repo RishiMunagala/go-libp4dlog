@@ -431,50 +431,52 @@ func (p4m *P4DMetrics) resetToZero() {
 
 	
 	for t := range p4m.totalTriggerLapse {
-		p4m.totalTriggerLapse[t] = make(map[string]float64)
-}
+		p4m.totalTriggerLapse[t] = float64(0)
+	}
 
+ 
 
+	for t := range p4m.cmdByProgramCounter {
+		p4m.cmdByProgramCounter[t] = int64(0)
+	}
 
-for t := range p4m.cmdByProgramCounter {
-		p4m.cmdByProgramCounter[t] = make(map[string]int64)
-}
+ 
 
+	for t := range p4m.cmdByReplicaCounter {
+		p4m.cmdByReplicaCounter[t] = int64(0)
+	}
 
+ 
 
-for t := range p4m.cmdByReplicaCounter {
-		p4m.cmdByReplicaCounter[t] = make(map[string]int64)
-}
+	for t := range p4m.cmdByUserDetailCounter {
+		for x := range p4m.cmdByUserDetailCounter[t] {
+			p4m.cmdByUserDetailCounter[t][x] = int64(0)
+		}
+	}
 
+ 
 
+	for t := range p4m.cmdByIPCounter {
+		p4m.cmdByIPCounter[t] = int64(0)
+	}
 
-for t := range p4m.cmdByUserDetailCounter {
-		p4m.cmdByUserDetailCounter[t] = make(map[string]map[string]int64)
-}
+ 
 
+	for t := range p4m.cmdByUserCounter {
+		p4m.cmdByUserCounter[t] = int64(0)
+	}
 
+ 
 
-for t := range p4m.cmdByIPCounter {
-		p4m.cmdByIPCounter[t] = make(map[string]int64)
-}
+	for t := range p4m.cmdErrorCounter {
+		p4m.cmdErrorCounter[t] = int64(0)
+	}
 
+ 
 
-
-for t := range p4m.cmdByUserCounter {
-		p4m.cmdByUserCounter[t] = make(map[string]int64)
-}
-
-
-
-for t := range p4m.cmdErrorCounter {
-		p4m.cmdErrorCounter[t] = make(map[string]int64)
-}
-
-
-
-for t := range p4m.cmdCounter {
-		p4m.cmdCounter[t] = make(map[string]int64)
-}
+	for t := range p4m.cmdCounter {
+		p4m.cmdCounter[t] = int64(0)
+	}
 		
 		
 }
